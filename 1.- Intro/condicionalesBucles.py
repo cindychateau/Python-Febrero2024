@@ -96,3 +96,15 @@ for y in cadena1:
     if y == ".":
         break
     print(y)
+
+
+'''Whoa. Es un gran idiota: agrega los enteros impares del 0 al 500,000, e imprime la suma final.'''
+sum_granidiota = 0
+for x in range(1, 500001, 2):
+    sum_granidiota += x
+print(sum_granidiota)
+
+array_granidiota = []
+for x in range(1, 500001, 2): #for x in range(500000): if x%2 != 0
+    array_granidiota.append(x)
+print(sum(array_granidiota))
