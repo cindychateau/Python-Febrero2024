@@ -55,11 +55,81 @@ def numeros(num):
 
 #Función que reciba un arreglo y que regrese la suma de los valores del arreglo
 #[1, 2, 3] 6
+lista = []
+def suma_array(arreglo):
+    resultado = 0
+    for num in arreglo:
+        resultado += num
+    return resultado
+
+print(suma_array([1, 2, 3]))
 
 #Función que reciba un arreglo y que regrese el número mayor del arreglo
 #[1, 2, 3] 3
+'''
+arr = [1, 2, 3]
+max = 1
+num = 1
+---
+num = 2
+max = 2
+---
+num = 3
+max = 3
+'''
+def numero_mayor(arr):
+    max = arr[0]
+    for num in arr:
+        if max < num:
+            max = num
+    return max
 
 #Función que reciba un arreglo y reciba un número y regrese True si el número se encuentra dentro del arreglo o False si NO se encuentra en el arreglo
 #[1, 2, 3], 3 -> TRUE. [1, 2, 3], 5 ->FALSE
+'''
+arr = [1, 2, 3]
+num = 3
+x = 1
+x = 2
+x = 3
+<-True
+================
+arr = [1, 2, 3]
+num = 4
+x = 1
+x = 2
+x = 3
+'''
+def existe_numero(arr, num):
+    existe = False
+    for x in arr:
+        if x == num:
+            existe = True
+    return existe
 
 #Función que reciba un arreglo y reemplace cualquier número negativo por 0. Regresa el arreglo SIN números negativos. Ej. Recibes: [1,5,10,-2], Regresas [1,5,10,0]
+'''
+arr = [1, 5, 10, -2]
+range-> 0 - 3
+i = 0
+i = 1
+i = 2
+i = 3
+arr[3] = 0
+arr = [1, 5, 10, 0]
+'''
+def reemplaza_negativos(arr):
+    for i in range(len(arr)): 
+        if arr[i] < 0:
+            arr[i] = 0 
+    return arr
+
+def reemplaza_negativos2(arr):
+    nuevo_arreglo = []
+    for valor in arr:
+        if valor < 0:
+            nuevo_arreglo.append(0)
+        else:
+            nuevo_arreglo.append(valor)
+    
+    return nuevo_arreglo
