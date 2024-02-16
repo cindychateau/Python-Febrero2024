@@ -51,3 +51,15 @@ def numeros(num):
         return num*num
     else:
         return num
+
+
+#Función que reciba un arreglo y que regrese la suma de los valores del arreglo
+#[1, 2, 3] 6
+
+#Función que reciba un arreglo y que regrese el número mayor del arreglo
+#[1, 2, 3] 3
+
+#Función que reciba un arreglo y reciba un número y regrese True si el número se encuentra dentro del arreglo o False si NO se encuentra en el arreglo
+#[1, 2, 3], 3 -> TRUE. [1, 2, 3], 5 ->FALSE
+
+#Función que reciba un arreglo y reemplace cualquier número negativo por 0. Regresa el arreglo SIN números negativos. Ej. Recibes: [1,5,10,-2], Regresas [1,5,10,0]
