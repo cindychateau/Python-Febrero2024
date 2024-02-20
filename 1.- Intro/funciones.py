@@ -133,3 +133,24 @@ def reemplaza_negativos2(arr):
             nuevo_arreglo.append(valor)
     
     return nuevo_arreglo
+
+
+'''
+3. Obtener valores de una lista de diccionarios
+Crea una función iterateDictionary2(key_name, some_list)que, dada una lista de diccionarios y un nombre de clave, la función imprima el valor almacenado en esa clave para cada diccionario. Por ejemplo, iterateDictionary2('name', estudiantes) debería generar:
+'''
+clave = "nombre"
+lista_estudiantes = [
+    {"nombre": "Elena", "apellido": "De Troya", "edad": 18},
+    {"nombre": "Juana", "apellido": "De Arco", "edad": 30},
+    {"nombre": "Pablo", "apellido": "Picasso", "edad": 50}
+]
+
+#key_name = "nombre"
+#some_list = lista_estudiantes
+def iterateDictionary2(key_name, some_list):
+    for diccionario in some_list:
+        print(diccionario[key_name])
+
+iterateDictionary2(clave, lista_estudiantes)
+iterateDictionary2("apellido", lista_estudiantes)
