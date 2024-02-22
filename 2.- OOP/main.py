@@ -1,11 +1,21 @@
 #Importamos la clase
 from Persona import Persona
+from Animal import Animal
+
+firulais = Animal("Firulais", "Woof")
+firulais.hacer_sonido()
+
+miu = Animal("Miu", "miaaaau")
+miu.hacer_sonido()
+
 
 #inicializando la instancia
-elena = Persona("Elena", "De Troya", "elena@codingdojo.com", ["Leer", "Estudiar", "Jugar"], 16)
+elena = Persona("Elena", "De Troya", "elena@codingdojo.com", ["Leer", "Estudiar", "Jugar"], 16, miu)
 
 #Inicializando la instancia
-juana = Persona("Juana", "De Arco", "juana@codingdojo.com", ["Bailar", "Programar"], 20)
+juana = Persona("Juana", "De Arco", "juana@codingdojo.com", ["Bailar", "Programar"], 20, firulais)
+
+juana.mascota.hacer_sonido()
 
 print(juana.apellido)
 print(elena.email)

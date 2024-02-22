@@ -9,9 +9,10 @@ class Persona:
     apellido = "De Arco"
     email = "juana@codingdojo.com"
     hobbies = ["Bailar", "Programar"]
+    mascota = firulais (Objeto/Instancia de Animal)
     '''
     #A través del método init INICIALIZAMOS/CREAMOS una nueva instancia
-    def __init__(self, nombre, apellido, email, hobbies, edad):
+    def __init__(self, nombre, apellido, email, hobbies, edad, mascota):
         self.nombre = nombre #juana.nombre = "Juana"
         self.apellido = apellido #juana.apellido = "De Arco"
         self.email = email #juana.email = "juana@codingdojo.com"
@@ -19,6 +20,9 @@ class Persona:
         self.edad = edad
         self.lineas_codigo = 0 #lineas de código que ha desarrollado
         Persona.lista_personas.append(self)
+        self.mascota = mascota #self.mascota = Animal("ABC", "Woof")
+        #self.cuentaAhorros = CuentaBancaria(.02, 0)
+        #self.cuentaCheques = CuentaBancaria(.01, 0)
 
     
     #self -> la instancia que está invocando al método
