@@ -6,3 +6,6 @@ class Animal:
     
     def hacer_sonido(self):
         print(f"El animalito {self.nombre} dice: {self.sonido}")
+    
+    def ir_al_banio(self):
+        raise NotImplementedError

@@ -1,6 +1,7 @@
 #Importamos la clase
 from Persona import Persona
 from Animal import Animal
+from Gato import Gato
 
 firulais = Animal("Firulais", "Woof")
 firulais.hacer_sonido()
@@ -44,3 +45,7 @@ if Persona.mayor_edad(30):
     print("Si es mayor")
 else:
     print("No es mayor")
+
+michi = Gato("Michi", "meeeoow", "corto", "calico")
+
+michi.hacer_sonido()
