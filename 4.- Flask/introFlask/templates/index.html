@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intro a Flask</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>¡Bienvenidos al framework de Flask!</h1>
+    <h2>¡Hola {{nombre}}! {{numero}} </h2>
+
+    {% for x in range(numero): %}
+        <h3>¡Saludos!</h3>
+    {% endfor %}
+
+    {% if nombre == "Elena" %}
+        <p>¿Dónde dejaste Troya?</p>
+    {% endif %}
+
+</body>
+</html>
