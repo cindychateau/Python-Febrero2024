@@ -1,5 +1,7 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 app = Flask(__name__)
+
+app.secret_key = "super clave secreta"
 
 @app.route("/")
 def index():
@@ -15,6 +17,7 @@ def enviar_formulario():
         "email": "elena@codingdojo.com"
     }
     '''
+    session['nombre'] = request.form['nombre']
     return redirect("/exito")
 
 @app.route("/exito")
