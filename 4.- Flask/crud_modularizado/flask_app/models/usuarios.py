@@ -43,3 +43,23 @@ class Usuario:
         query = "DELETE FROM usuarios WHERE id = %(id)s"
         result = connectToMySQL('crud_modularizado').query_db(query, diccionario)
         return result
+    
+    @classmethod
+    def mostrar(cls, diccionario):
+        #diccionario = {"id": 1}
+        query = "SELECT * FROM usuarios WHERE id = %(id)s"
+        result = connectToMySQL('crud_modularizado').query_db(query, diccionario) #Lista de diccionarios
+        '''
+        result = [
+            {"id": 1, "nombre": "Elena", "apellido":"De Troya"......} -> 0
+        ]
+        '''
+        usuario = cls(result[0])
+        return usuario
+    
+    @classmethod
+    def actualizar(cls, formulario):
+        #formulario = {"id": 1, "nombre": "Elena", "apellido":"De Troya".....}
+        query = "UPDATE usuarios SET nombre=%(nombre)s, apellido=%(apellido)s, email=%(email)s WHERE id=%(id)s"
+        result = connectToMySQL('crud_modularizado').query_db(query, formulario)
+        return result

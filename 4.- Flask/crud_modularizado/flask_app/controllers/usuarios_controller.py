@@ -28,3 +28,15 @@ def borrar(id): #id = 1
     diccionario = {"id": id} #diccionario = {"id": 1}
     Usuario.borrar(diccionario)
     return redirect("/")
+
+@app.route("/editar/<int:id>")
+def editar(id):
+    dicc = {"id": id}
+    usuario = Usuario.mostrar(dicc) #Instancia de usuario que quiero editar
+    return render_template("editar.html", usuario=usuario)
+
+@app.route("/actualizar", methods=["POST"])
+def actualizar():
+    #request.form = {TODO lo que el usuario ingresó en el formulario de editar.html}
+    Usuario.actualizar(request.form)
+    return redirect("/")
