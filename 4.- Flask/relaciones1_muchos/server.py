@@ -1,6 +1,7 @@
 from flask_app import app
 
-#Importar Controladores PENDIENTE*********
+#Importar Controladores
+from flask_app.controllers import usuarios_controller
 
 
 if __name__ == "__main__":

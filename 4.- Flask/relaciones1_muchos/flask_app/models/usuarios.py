@@ -22,3 +22,11 @@ class Usuario:
         return result
 
     #Metodo que obtenga TODOS los usuarios
+    @classmethod
+    def muestra_usuarios(cls):
+        query = "SELECT usuarios.*, nombre_salon FROM usuarios JOIN salones ON salones.id = usuarios.salon_id"
+        results = connectToMySQL('esquema_salones').query_db(query) #Lista de Diccionarios
+        usuarios = []
+        for usuario in results:
+            usuarios.append(cls(usuario))
+        return usuarios #regreso lista instancias de usuario
