@@ -1,4 +1,8 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask import flash #Mandar los mensajes temporales de validación
+
+import re #Expresiones Regulares
+EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$') #Patrón de email
 
 class Usuario:
 
@@ -63,3 +67,31 @@ class Usuario:
         query = "UPDATE usuarios SET nombre=%(nombre)s, apellido=%(apellido)s, email=%(email)s WHERE id=%(id)s"
         result = connectToMySQL('crud_modularizado').query_db(query, formulario)
         return result
+    
+    @staticmethod
+    def valida_usuario(formulario): #formulario = Diccionario
+        is_valid = True #Asumimos que el formulario está llenado correctamente
+
+        if len(formulario['nombre']) < 3:
+            #Mensaje de error
+            flash("El nombre debe de tener al menos 3 caracteres", "registro")
+            is_valid = False
+        
+        if len(formulario['apellido']) < 3:
+            flash("El apellido debe de tener al menos 3 caracteres", "registro")
+            is_valid = False
+        
+        #Verificamos con Expresiones Regulares que el correo tenga el formato correcto
+        if not EMAIL_REGEX.match(formulario['email']):
+            flash("E-mail inválido", "registro")
+            is_valid = False
+        
+        #Consultar si existe ese correo en la base de datos
+        query = "SELECT * FROM usuarios WHERE email = %(email)s"
+        results = connectToMySQL('crud_modularizado').query_db(query, formulario) #Lista de Dicionarios
+        if len(results) >= 1:
+            flash("E-mail registrado previamente", "registro")
+            is_valid = False
+        return is_valid
+        
+

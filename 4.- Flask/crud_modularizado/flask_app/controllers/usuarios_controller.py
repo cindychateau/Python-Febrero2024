@@ -1,5 +1,5 @@
 #Importaciones
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 
 #Importar la app
 from flask_app import app
@@ -20,7 +20,15 @@ def nuevo():
 @app.route("/crear", methods=["POST"])
 def crear():
     #Recibir un formulario-> request.form = {"nombre": "elena", "apellido": "de troya", "email": "email@.com"}
-    Usuario.guardar(request.form)
+    #Usuario.guardar(request.form)
+
+    if not Usuario.valida_usuario(request.form): #Si mi formulario NO es válido
+        return redirect("/nuevo") #redirige al formulario
+    else:
+        Usuario.guardar(request.form)
+        flash("Usuario guardado", "exito")
+
+
     return redirect("/")
 
 @app.route("/borrar/<int:id>") # /borrar/1

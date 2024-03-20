@@ -10,6 +10,17 @@
     <div class="container">
         <h1>Usuarios</h1>
         <a href="/nuevo" class="btn btn-success">Nuevo Usuario</a>
+
+        {% with messages = get_flashed_messages(category_filter=['exito']) %}
+                {% if messages %}
+                    <div class="alert alert-success">
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+
         <table class="table table-hover">
             <thead>
                 <tr>
