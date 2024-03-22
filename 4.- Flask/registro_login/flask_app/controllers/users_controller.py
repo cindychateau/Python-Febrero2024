@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, request, session
+from flask import Flask, render_template, redirect, request, session, flash
 from flask_app import app
 
 #Importamos TODOS los modelos
@@ -37,4 +37,35 @@ def register():
 
 @app.route("/dashboard")
 def dashboard():
-    return render_template("dashboard.html")
+    #Verificar que el usuario inició sesión
+    if 'user_id' not in session:
+        return redirect("/")
+    
+    #Crear una instancia del usuario en base a la sesión
+    form = {"id": session['user_id']}
+    user = User.get_by_id(form)
+
+    return render_template("dashboard.html", user=user)
+
+@app.route("/login", methods=['POST'])
+def login():
+    #request.form = {"email": "elena@cd.com", "password": "Hola123"}
+    #Verificamos que el email exista en BD
+    user = User.get_by_email(request.form) #user = instancia User O False
+
+    if not user:
+        flash("E-mail no registrado", "login")
+        return redirect("/")
+    
+    #Si user SI es instancia de User
+    if not bcrypt.check_password_hash(user.password, request.form['password']): #contra encryptada, contra no encr
+        flash("Password incorrecto", "login")
+        return redirect("/")
+    
+    session['user_id'] = user.id #Guardo en sesión el ID del usuario
+    return redirect("/dashboard")
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect("/")

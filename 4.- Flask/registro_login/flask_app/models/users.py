@@ -61,3 +61,23 @@ class User:
             is_valid = False
         
         return is_valid
+    
+    @classmethod
+    def get_by_email(cls, form):
+        #form = {"email": "elena@cd.com", "password": "Hola123"}
+        query = "SELECT * FROM users WHERE email = %(email)s"
+        results = connectToMySQL('esquema_loginreg').query_db(query, form) #LISTA
+        if len(results) == 1:
+            #Si existe el usuario, me regresa solo 1 reg. [0]
+            user = cls(results[0])
+            return user #Regreso la instancia del usuario con ese correo
+        else:
+            return False
+    
+    @classmethod
+    def get_by_id(cls, form):
+        #form = {"id": 1}
+        query = "SELECT * FROM users WHERE id = %(id)s"
+        result = connectToMySQL('esquema_loginreg').query_db(query, form)#LISTA de diccionarios.. Que tiene solo 1 posición
+        user = cls(result[0])
+        return user
