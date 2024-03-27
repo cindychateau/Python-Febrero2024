@@ -3,6 +3,7 @@ from flask_app import app
 
 #Importamos TODOS los modelos
 from flask_app.models.users import User
+from flask_app.models.messages import Message
 
 #Importamos BCrypt -> Encriptar la contraseña
 from flask_bcrypt import Bcrypt
@@ -48,7 +49,13 @@ def dashboard():
     #Obtener la lista con todos los usuarios
     all_users = User.get_all()
 
-    return render_template("dashboard.html", user=user, all_users=all_users)
+    #Obtener una lista con todos los mensajes
+    messages = Message.get_my_messages(form)
+
+    #Cantidad de mensajes enviados
+    cantidad = Message.sent_messages(form)
+
+    return render_template("dashboard.html", user=user, all_users=all_users, messages=messages, cantidad=cantidad)
 
 @app.route("/login", methods=['POST'])
 def login():

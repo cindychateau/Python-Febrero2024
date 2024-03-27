@@ -14,3 +14,10 @@ def send_message():
     #Guardamos el mensaje -> Verificar que la info sea correcta
     Message.save(request.form)
     return redirect("/dashboard")
+
+#/delete/3
+@app.route("/delete/<int:id>") #en mi URL obtengo el ID del mensaje a borrar
+def delete(id): #id = 3
+    form = {"id": id} #{"id": 3}
+    Message.delete_message(form)
+    return redirect("/dashboard")

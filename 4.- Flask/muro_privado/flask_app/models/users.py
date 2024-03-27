@@ -84,7 +84,7 @@ class User:
 
     @classmethod
     def get_all(cls):
-        query = "SELECT * FROM users"
+        query = "SELECT * FROM users ORDER BY first_name ASC"
         results = connectToMySQL('esquema_muroprivado').query_db(query) #Lista de diccionarios
         users = []
         for u in results:

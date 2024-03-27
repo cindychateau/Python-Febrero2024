@@ -12,7 +12,7 @@ class Message:
         self.receiver_id = data['receiver_id']
 
         #1 atributo extra
-        self.sender_name = data['sender_name']
+        self.sender_name = data['sender_name'] #Nombre que está enviando el mensaje
     
     @classmethod
     def save(cls, form):
@@ -20,3 +20,32 @@ class Message:
         query = "INSERT INTO messages (content, sender_id, receiver_id) VALUES (%(content)s, %(sender_id)s, %(receiver_id)s)"
         result = connectToMySQL('esquema_muroprivado').query_db(query, form)
         return result
+    
+    @classmethod
+    def get_my_messages(cls, dicc):
+        #dicc = {"id": ID del usuario en sesión}
+        query = "SELECT messages.*, users.first_name as sender_name FROM messages JOIN users ON sender_id = users.id WHERE receiver_id =%(id)s "
+        results = connectToMySQL('esquema_muroprivado').query_db(query, dicc) #Lista diccionarios
+        messages = []
+        for m in results:
+            messages.append(cls(m))
+        return messages
+    
+    @classmethod
+    def delete_message(cls, form):
+        #form = {"id": 1}
+        query = "DELETE FROM messages WHERE id = %(id)s"
+        result = connectToMySQL('esquema_muroprivado').query_db(query, form)
+        return result
+    
+    @classmethod
+    def sent_messages(cls, form):
+        #form = {"id": ID del usuario en sesión}
+        query = "SELECT COUNT(*) as cantidad FROM messages WHERE sender_id = %(id)s"
+        result = connectToMySQL('esquema_muroprivado').query_db(query, form) #Lista con 1 registro que tiene un diccionario con la cantidad
+        '''
+        result = [
+            {"cantidad":2}
+        ]
+        '''
+        return result[0]['cantidad']
