@@ -50,16 +50,11 @@
             <div class="col-6">
                 <h2>Inicio de Sesión</h2>
                 <!-- MENSAJE DE ERROR -->
-                {% with messages = get_flashed_messages(category_filter=['login']) %}
-                    {% if messages %}
-                        <div class="alert alert-danger">
-                            {% for message in messages %}
-                                <p>{{message}}</p>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                {% endwith %}
-                <form action="/login" method="POST">
+                
+                <div id="erroresLogin" class="">
+                    
+                </div>
+                <form id="formLogin" action="/login" method="POST">
                     <div>
                         <label>E-mail</label>
                         <input type="email" name="email" class="form-control">
@@ -73,5 +68,6 @@
             </div>
         </div>
     </div>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>
