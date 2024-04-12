@@ -72,7 +72,49 @@ def cuenta_regresiva(num):
         print(num)
         cuenta_regresiva(num-1)
 
-cuenta_regresiva(4)
+#cuenta_regresiva(4)
 
 #SIGMA - Recibe un número y va sumando todos los números anteriores
 #sigma(5) = 5+4+3+2+1 = 15
+'''
+sigma(5)
+num = 5
+RETURN  5 + sigma(4) = 5 + 10 = 15
+
+sigma(4)
+num = 4
+RETURN 4 + sigma(3) = 4 + 6 = 10
+
+sigma(3)
+num = 3
+RETURN 3 + sigma(2) = 3 + 3 = 6
+
+sigma(2)
+num = 2
+RETURN 2 + sigma(1) = 2 + 1 = 3
+
+sigma(1)
+num = 1
+RETURN 1
+'''
+def sigma(num):
+    if num == 1:
+        return 1
+    else:
+        return num + sigma(num - 1)
+
+print(sigma(5))
+
+'''
+RETO GRUPAL: Función factorial recursiva
+Crear una función que reciba un número y regresa el factorial de ese número
+factorial(4) -> 4 * 3 * 2 * 1
+'''
+
+'''
+RETO GRUPAL: Función para fibonacci recursiva
+Crear una función que reciba como parámetro un num positivo que represente una posición y que regrese el número de la serie de fibonacci en esa posición
+Serie Fibonacci: 0 1 1 2 3 5 8 13
+fibonacci(5) -> 5
+fibonacci(7) -> 13
+'''
