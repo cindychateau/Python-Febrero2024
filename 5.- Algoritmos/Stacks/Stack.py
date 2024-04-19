@@ -6,10 +6,22 @@ class Stack:
         self.top = None
     
     def push(self, nuevo_nodo):
-        pass
+        nuevo_nodo.next = self.top
+        self.top = nuevo_nodo
     
     def pop(self):
-        pass
+        aux = self.top
+        if aux != None:
+            self.top = aux.next
+            aux.next = None
     
     def impresion(self):
-        pass
+        aux = self.top
+        while aux != None:
+            print(aux.valor)
+            aux = aux.next
+
+
+            '''
+            [(1*2) + (1-3)] * (1+3)
+            '''
