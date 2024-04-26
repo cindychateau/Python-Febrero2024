@@ -1,0 +1,29 @@
+1) git init - Iniciliza mi carpeta como repositorio local
+2) git add . / git add NombreArchivo.ext
+3) git commit -m "Mensaje para el punto guardado"
+4) git remote add origin url-de-github
+5) git push -u origin master/main
+
+Para actualizar:
+2)
+3)
+5)
+
+Cambios para VSCode
+
+Colaboración:
+-Ponemos como colaborador a los usuarios (Settings -> Colaborators)
+-Aceptar la invitación
+-git clone url-repo.git
+-Antes de comenzar a codificar: git pull (actualiza el repo)
+-Codificar
+-git add .
+-git commit -m "Mensaje"
+-git push -u origin master
+
+Conflictos
+-Analizar los cambios y establecer qué cambios se quedan
+-Realizar cambios
+-git add .
+-git commit -m "Merge"
+-git push -u origin master

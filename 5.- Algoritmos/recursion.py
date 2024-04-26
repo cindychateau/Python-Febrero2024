@@ -103,13 +103,19 @@ def sigma(num):
     else:
         return num + sigma(num - 1)
 
-print(sigma(5))
+#print(sigma(5))
 
 '''
 RETO GRUPAL: Función factorial recursiva
 Crear una función que reciba un número y regresa el factorial de ese número
 factorial(4) -> 4 * 3 * 2 * 1
 '''
+def factorial(num):
+    if num == 1:
+        return 1
+    else:
+        return num * factorial(num-1)
+
 
 '''
 RETO GRUPAL: Función para fibonacci recursiva
@@ -117,4 +123,38 @@ Crear una función que reciba como parámetro un num positivo que represente una
 Serie Fibonacci: 0 1 1 2 3 5 8 13
 fibonacci(5) -> 5
 fibonacci(7) -> 13
+
+fibonacci(5)
+num = 5
+RETURN fibonacci(4) + fibonacci(3) = 3 + 2 = 5
+
+fibonacci(4)
+num = 4
+RETURN fibonacci(3) + fibonacci(2) = 2 + 1 = 3
+
+fibonacci(3)
+num = 3
+RETURN fibonacci(2) + fibonacci(1) = 1 + 1 = 2
+
+fibonacci(2)
+num = 2
+RETURN fibonacci(1) + fibonacci(0) = 1 + 0 = 1
+
+fibonacci(1)
+num = 1
+RETURN 1
+
+fibonacci(0)
+num = 0
+RETURN 0
+
 '''
+def fibonacci(num):
+    if num == 0:
+        return 0
+    elif num == 1:
+        return 1
+    else:
+        return fibonacci(num - 1) + fibonacci(num - 2)
+
+print(fibonacci(5))
